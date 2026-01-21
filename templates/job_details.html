@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analyst - DiForce Careers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <!-- Header Image -->
+        <div class="header-image">
+            <canvas id="headerCanvas"></canvas>
+            <h1 class="header-title">DiForce Careers Connector</h1>
+        </div>
+
+        <!-- Navigation -->
+        <div class="container mt-3">
+            <a href="{{ url_for('index') }}" class="back-link">← All Jobs</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="container my-4">
+            <div class="content-card">
+                <div class="mb-4">
+                    <h2 class="job-detail-title">{{ job.title }}</h2>
+                    <p class="job-location">{{ job.location }}</p>
+                </div>
+
+                <section class="mb-4">
+                    <h3 class="section-subtitle">Responsibilities</h3>
+                    <div class="placeholder-text"></div>
+                    <div class="placeholder-text"></div>
+                    <div class="placeholder-text short"></div>
+                </section>
+
+                <section class="mb-4">
+                    <h3 class="section-subtitle">Requirements</h3>
+                    <div class="placeholder-text"></div>
+                    <div class="placeholder-text"></div>
+                    <div class="placeholder-text short"></div>
+                </section>
+
+                <section class="mb-5">
+                    <h3 class="section-subtitle">Salary</h3>
+                    <div class="placeholder-text"></div>
+                    <div class="placeholder-text short"></div>
+                </section>
+
+                <!-- Application Form -->
+                <section class="application-form">
+                    <h3 class="form-title mb-4">Application Form</h3>
+
+                    <form id="applicationForm" action="{{ url_for('apply') }}" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" name="name" id="name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" id="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="linkedin" class="form-label">LinkedIn</label>
+                            <input type="url" class="form-control" name="linkedin" id="linkedin">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="education" class="form-label">Education</label>
+                            <textarea class="form-control" name="education" id="education" rows="3" required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="experience" class="form-label">Work Experience</label>
+                            <textarea class="form-control" name="experience" id="experience" rows="4" required></textarea>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="resume" class="form-label">Resume</label>
+                            <div class="d-flex gap-2">
+                                <input type="file" class="form-control" name="resume" id="resume" accept=".pdf,.doc,.docx" required>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-submit">Submit</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/header-canvas.js') }}"></script>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
