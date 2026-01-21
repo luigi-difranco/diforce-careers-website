@@ -52,7 +52,16 @@
                 <section class="application-form">
                     <h3 class="form-title mb-4">Application Form</h3>
 
+                    {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        {% for message in messages %}
+                          <div class="alert alert-danger">{{ message }}</div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endwith %}
+
                     <form id="applicationForm" action="{{ url_for('apply') }}" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="job_id" value="{{ job.id }}">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" name="name" id="name" required>
