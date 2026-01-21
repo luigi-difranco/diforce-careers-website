@@ -16,19 +16,19 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Flask Server"
+args = "Flask Server house-keeping"
 
 [[workflows.workflow]]
-name = "Flask Server"
+name = "Flask Server house-keeping"
 author = "agent"
-
-[workflows.workflow.metadata]
-outputType = "webview"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python app.py"
+args = "python src/main.py"
 waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
 
 [[ports]]
 localPort = 5000
@@ -36,4 +36,4 @@ externalPort = 80
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["python", "app.py"]
+run = ["python", "src/main.py"]
